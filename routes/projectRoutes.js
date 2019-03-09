@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
   const entry = { name, description, completed };
   if (!name || !description)
     return res.status(400).json({
-      error: 'Request must include name and description keys.',
+      error: 'Request body must include name and description keys.',
     });
   db.insert(entry)
     .then(project => res.status(201).json({ project }))
@@ -39,7 +39,7 @@ router.put('/:id', (req, res) => {
   const entry = { name, description, completed };
   if (!name || !description)
     return res.status(400).json({
-      error: 'Request must include name and description keys.',
+      error: 'Request body must include name and description keys.',
     });
   db.update(id, entry)
     .then(project => {
