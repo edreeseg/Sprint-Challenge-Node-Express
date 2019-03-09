@@ -65,4 +65,18 @@ router.delete('/:id', (req, res) => {
     .catch(error => res.status(500).json({ error }));
 });
 
+router.get('/:id/actions', (req, res) => {
+  const { id } = req.params;
+  db.get(id) // Must make a call to the get method first, because getProjectActions does not notify of nonexistent resource.
+    .then(() => db.getProjectActions(id))
+    .then(actions => res.json({ actions }))
+    .catch(error => {
+      if (error.message === "Cannot set property 'actions' of undefined")
+        return res
+          .status(404)
+          .json({ error: 'No project with that ID found.' });
+      else res.status(500).json({ error });
+    });
+});
+
 module.exports = router;
