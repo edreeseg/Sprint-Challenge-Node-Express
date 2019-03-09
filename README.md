@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+Two important parts of express are Middleware and Routing. Middleware allows us to handle requests before they hit our endpoints, and routing allows us to break our application into smaller, easily understood parts.
+
 - [ ] Describe Middleware?
+
+Middleware are functions that receive the request and response objects, can operate on them, and then can either return a response themselves or call the next Middleware in the chain. Note that Middleware CAN manipulate the objects, but does not have to.
 
 - [ ] Describe a Resource?
 
+A resource essentially refers to any resource that can be named. Anything that can be the target of a reference by a user is considered a resource - this includes a picture, a document, or a collection of other resources.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+It can return a 200-level response status code.
+
 - [ ] How can we partition our application into sub-applications?
+
+We can make use of routes to separate our application into smaller chunks, and make the application more easily navigatable.
 
 ## Project Setup
 
