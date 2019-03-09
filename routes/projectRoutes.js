@@ -11,9 +11,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const { name, description, completed } = req.body;
   const entry = { name, description, completed };
-  if (Object.values(entry).some(x => x === undefined))
+  if (!name || !description)
     return res.status(400).json({
-      error: 'Request must include name, description, and completed keys.',
+      error: 'Request must include name and description keys.',
     });
   db.insert(entry)
     .then(project => res.status(201).json({ project }))
@@ -37,9 +37,9 @@ router.put('/:id', (req, res) => {
   const { id } = req.params;
   const { name, description, completed } = req.body;
   const entry = { name, description, completed };
-  if (Object.values(entry).some(x => x === undefined))
+  if (!name || !description)
     return res.status(400).json({
-      error: 'Request must include name, description, and completed keys.',
+      error: 'Request must include name and description keys.',
     });
   db.update(id, entry)
     .then(project => {
